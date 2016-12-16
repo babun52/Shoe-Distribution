@@ -1,0 +1,47 @@
+<div class="jumbotron">
+  <h1>Epicodus Shoe Distribution</h1>
+</div>
+<div class="well">
+  <% if @stores.any?() %>
+    <h2>Here are the store(s): </h2>
+    <ul>
+      <% @stores.each() do |store| %>
+        <li><a href="/stores/<%= store.id() %>"><%= store.name() %></a></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <h2>There aren't any stores yet!</h2>
+  <% end %>
+</div>
+<div class="well">
+  <% if @brands.any?() %>
+    <h2>Here are the brand(s): </h2>
+    <ul>
+      <% @brands.each() do |brand| %>
+        <li><a href="/brands/<%= brand.id() %>"><%= brand.name() %></a></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <h2>There aren't any brands yet!</h2>
+  <% end %>
+</div><br>
+
+<form action="/add_store" method="post">
+  <fieldset>
+    <legend>Add a Store Here</legend>
+    <label for="store_name"></label>
+    <input id="store_name" name="store_name" type="text">
+
+    <button type="submit" class="btn btn-secondary">Add Store</button>
+  </fieldset>
+</form><br>
+
+<form action="/add_brand" method="post">
+  <fieldset>
+    <legend>Add a Brand Here</legend>
+    <label for="brand_name"></label>
+    <input id="brand_name" name="brand_name" type="text">
+
+    <button type="submit" class="btn btn-secondary">Add Brand</button>
+  </fieldset>
+</form>

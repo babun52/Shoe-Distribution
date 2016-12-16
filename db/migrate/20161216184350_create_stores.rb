@@ -1,4 +1,4 @@
-class CreateStores < ActiveRecord::Migration[5.0]
+class CreateStores < ActiveRecord::Migration
   def change
     create_table(:stores) do |t|
       t.column(:name, :string)
