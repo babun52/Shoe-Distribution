@@ -51,8 +51,8 @@ Navigate to ```localhost:4567``` in browser.
 
 ## Technologies Used
 
-Application: Ruby, Sinatra, Active Record
-Testing: Rspec, Capybara
+Application: Ruby, Sinatra, Active Record<br>
+Testing: Rspec, Capybara<br>
 Database: Postgres
 
 ### License
