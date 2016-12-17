@@ -29,8 +29,8 @@
 <form action="/brands" method="post">
   <fieldset>
     <legend>Add a Brand Here</legend>
-    <label for="store_id">Select a store</label>
-    <select id="store_id" name="store_id" type='text'>
+    <label for="stores">Select a store</label>
+    <select id="stores" name="stores" type='text'>
       <% @stores.each() do |store| %>
         <option value="<%= store.id() %>"><%= store.name() %></option>
       <% end %>
