@@ -23,3 +23,22 @@
     <button type="submit" class="btn btn-secondary">Add Store</button>
   </fieldset>
 </form><br>
+
+<% if !@stores.any?()%>
+<% else %>
+<form action="/brands" method="post">
+  <fieldset>
+    <legend>Add a Brand Here</legend>
+    <label for="store_id">Select a store</label>
+    <select id="store_id" name="store_id" type='text'>
+      <% @stores.each() do |store| %>
+        <option value="<%= store.id() %>"><%= store.name() %></option>
+      <% end %>
+    </select>
+    <label for="brand_name"></label>
+    <input id="brand_name" name="brand_name" type="text" placeholder="Enter a Brand Name">
+
+    <button type="submit" class="btn btn-secondary">Add Brand</button>
+  </fieldset>
+</form><br>
+<% end %>

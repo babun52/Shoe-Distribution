@@ -22,16 +22,6 @@
   <% end %>
 </div><br>
 
-<form action="/brands" method="post">
-  <fieldset>
-    <legend>Add a Brand Here</legend>
-    <label for="brand_name"></label>
-    <input id="brand_name" name="brand_name" type="text" placeholder="Enter a Brand Name">
-
-    <button type="submit" class="btn btn-secondary">Add Brand</button>
-  </fieldset>
-</form><br>
-
 <form action="/stores/<%= @store.id %>" method="post">
   <input name="_method" type="hidden" value="delete">
 

@@ -12,11 +12,12 @@ post('/stores') do
   name = params.fetch('store_name')
   new_store = Store.create(:name => name)
   @stores = Store.all()
-  erb(:index)
+  redirect to ('/')
 end
 
 get('/stores/:id') do
   @store = Store.find(params.fetch('id').to_i)
+  @stores = Store.all()
   @brands = Brand.all()
   erb(:store)
 end
@@ -41,13 +42,12 @@ end
 
 post('/brands') do
   name = params.fetch('brand_name')
-  assign = params.fetch('assign_store')
-  @store = Store.find(assign.to_i())
+  store_id = Store.find(params.fetch('store_id'))
   @new_brand = Brand.create(:name => name)
   if @new_brand.save()
     @brands = Brand.all()
-    redirect to ('/stores/#{@store.id()}')
+    redirect to ('/')
   else
-    redirect to ('/stores/#{@store.id()}')
+    redirect to ('/')
   end
 end
