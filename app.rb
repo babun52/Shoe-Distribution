@@ -16,9 +16,15 @@ post('/add_store') do
   erb(:index)
 end
 
+get('/stores/:id') do
+  @store = Store.find(params.fetch("id").to_i())
+  @brands = Brand.all()
+  erb(:store)
+end
+
 post('/add_brand') do
   name = params.fetch('brand_name')
   new_store = Brand.create(:name => name)
   @brands = Brand.all()
-  erb(:index)
+  erb(:store)
 end

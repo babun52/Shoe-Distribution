@@ -3,7 +3,7 @@
     <h2>Here are the brand(s): </h2>
     <ul>
       <% @brands.each() do |brand| %>
-        <li><a href="/brands/<%= brand.id() %>"><%= brand.name() %></a></li>
+        <li><%= brand.name() %></li>
       <% end %>
     </ul>
   <% else %>
