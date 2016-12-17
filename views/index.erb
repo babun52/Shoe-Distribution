@@ -4,9 +4,9 @@
 <div class="well">
   <% if @stores.any?() %>
     <h2>Here are the store(s): </h2>
-    <ul>
+    <ul class="list-inline">
       <% @stores.each() do |store| %>
-        <li><a href="/stores/<%= store.id() %>"><%= store.name() %></a></li>
+        <li><a class="btn btn-primary" href="/stores/<%= store.id() %>"><%= store.name() %></a></li>
       <% end %>
     </ul>
   <% else %>

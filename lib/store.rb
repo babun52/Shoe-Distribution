@@ -6,6 +6,6 @@ class Store < ActiveRecord::Base
 private
 
   define_method(:capitalize_store_name) do
-    self.name = (name().titleize())
+    self.name = (name().titlecase())
   end
 end
