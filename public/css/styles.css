@@ -1,0 +1,15 @@
+body {
+  box-sizing: border-box;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 400;
+}
+
+.jumbotron {
+  color: #ffffff;
+  background-color: #006dcc;
+}
+
+.well {
+  background-color: white;
+  border-color: #006dcc;
+}

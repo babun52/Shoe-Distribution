@@ -31,3 +31,14 @@ describe('deleting a store name', {:type => :feature}) do
     expect(page).to have_content("There aren't any stores yet!")
   end
 end
+
+describe('adding shoe brands to a store name', {:type => :feature}) do
+  it('adds existing shoe brands to a store') do
+    store = Store.create(:name => 'macy')
+    brand = Brand.create(:name => 'nike')
+    visit("/stores/#{store.id()}")
+    check('Nike')
+    click_button('Add Brand')
+    expect(page).to have_content('Nike')
+  end
+end

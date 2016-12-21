@@ -6,26 +6,40 @@
     <input id="rename" name="rename" type="text">
 
     <button type="submit">Rename</button>
+  </form><br>
+  <form action="/stores/<%= @store.id %>" method="post">
+    <input name="_method" type="hidden" value="delete">
+
+    <button class="btn btn-warning" type="submit">DELETE</button>
   </form>
 </div>
-
-<div class="well">
-  <% if @brands.any?() %>
-    <h2>Here are the brand(s): </h2>
-    <ul class="list-inline">
-      <% @brands.each() do |brand| %>
-        <li><%= brand.name() %></li>
-      <% end %>
-    </ul>
-  <% else %>
-    <h2>There aren't any brands yet!</h2>
-  <% end %>
-</div><br>
-
-<form action="/stores/<%= @store.id %>" method="post">
-  <input name="_method" type="hidden" value="delete">
-
-  <button class="btn btn-warning" type="submit">DELETE</button>
-</form><br>
-
-<a class="btn btn-info" href="/">Back</a>
+<div class="col-lg-6">
+  <div class="well">
+    <% if @store.brands.any?() %>
+      <h3>Brands in this store:</h3>
+      <ul>
+        <% @store.brands.each() do |brand| %>
+          <li><%= brand.name() %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <h3>No Brand(s)</h3>
+    <% end %>
+  </div>
+</div>
+<div class="col-lg-6">
+  <div class="well">
+    <h4>Brands</h4>
+    <form action="/stores/<%= @store.id() %>" method="post">
+     <% @brands.each() do |brand| %>
+       <div class="checkbox">
+         <label>
+           <input type="checkbox" name="brand_ids" value="<%= brand.id() %>"><%= brand.name() %>
+         </label>
+       </div>
+     <% end %>
+     <fieldset><button type="submit" class="btn btn-primary">Add Brand</button></fieldset>
+    </form>
+  </div>
+</div>
+<a class="btn btn-primary" href="/">Back</a>

@@ -5,6 +5,7 @@ Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
 get('/') do
   @stores = Store.all()
+  @brands = Brand.all()
   erb(:index)
 end
 
@@ -22,15 +23,18 @@ get('/stores/:id') do
   erb(:store)
 end
 
+post('/stores/:id') do
+  @store = Store.find(params.fetch('id').to_i())
+  brand = Brand.find(params.fetch('brand_ids'))
+  @store.brands.push(brand)
+  redirect to ("/stores/#{@store.id()}")
+end
+
 patch('/stores/:id') do
   rename = params.fetch('rename')
   @store = Store.find(params.fetch('id').to_i())
-  if @store.update({:name => rename})
-    @brands = Brand.all()
-    redirect to ("/stores/#{@store.id()}")
-  else
-    redirect to ("/stores/#{@store.id()}")
-  end
+  @store.update({:name => rename})
+  redirect to ("/stores/#{@store.id()}")
 end
 
 delete('/stores/:id') do
@@ -41,7 +45,7 @@ end
 
 post('/brands') do
   name = params.fetch('brand_name')
-  @stores = Store.find(params.fetch('stores').to_i())
+  @stores = Store.all()
   @new_brand = Brand.create(:name => name)
   redirect to ('/')
 end
