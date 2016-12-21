@@ -5,6 +5,6 @@ class Brand < ActiveRecord::Base
 
 private
   define_method(:capitalize_brand_name) do
-    self.name = (name().titlecase())
+    self.name = name().titlecase()
   end
 end
